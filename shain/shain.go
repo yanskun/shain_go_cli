@@ -1,6 +1,6 @@
-package employee
+package shain
 
-type Employee struct {
+type Shain struct {
 	Name     string
 	Birthday int
 	IsMan    bool

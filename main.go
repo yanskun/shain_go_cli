@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/c-bata/go-prompt"
-	"github.com/yasudanaoya/shain_go_cli/employee"
+	"github.com/yasudanaoya/shain_go_cli/shain"
 )
 
 func menu(d prompt.Document) []prompt.Suggest {
@@ -39,8 +39,8 @@ func inputName() {
 	}
 }
 
-func CreateEmployee(list []employee.Employee) {
-	var user = &employee.Employee{}
+func CreateShain(list []shain.Shain) {
+	var user = &shain.Shain{}
 	user.Name = "taro"
 	user.Birthday = 20001231
 	user.IsMan = true
@@ -51,24 +51,24 @@ func CreateEmployee(list []employee.Employee) {
 	showMenu(newList)
 }
 
-func ShowEmployee(list []employee.Employee) {
+func ShowShainList(list []shain.Shain) {
 	fmt.Print(list)
 
 	showMenu(list)
 }
 
-func showMenu(list []employee.Employee) {
+func showMenu(list []shain.Shain) {
 	selectedMenu := prompt.Input("> ", menu)
 	switch selectedMenu {
 	case "1":
-		CreateEmployee(list)
+		CreateShain(list)
 	case "2":
-		ShowEmployee(list)
+		ShowShainList(list)
 	}
 }
 
 func main() {
-	list := []employee.Employee{}
+	list := []shain.Shain{}
 	fmt.Println("メニュー選択してね")
 	showMenu(list)
 }
