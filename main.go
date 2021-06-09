@@ -60,6 +60,12 @@ func ShowShainList(list []shain.Shain) {
 	showMenu(list)
 }
 
+func UpdateShain(list []shain.Shain) {
+	// TODO: 更新
+
+	showMenu(list)
+}
+
 func DeleteShain(list []shain.Shain) {
 	newList := []shain.Shain{}
 	// TODO: 🆔 を入力できるように
@@ -79,6 +85,8 @@ func showMenu(list []shain.Shain) {
 		CreateShain(list)
 	case "2":
 		ShowShainList(list)
+	case "3":
+		UpdateShain(list)
 	case "4":
 		DeleteShain(list)
 	}
