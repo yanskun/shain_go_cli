@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/c-bata/go-prompt"
+	"github.com/yasudanaoya/shain_go_cli/employee"
 )
 
 func menu(d prompt.Document) []prompt.Suggest {
@@ -38,17 +39,14 @@ func inputName() {
 	}
 }
 
-type Employee struct {
-	name     string
-	birthday int
-	isMan    bool
-	salary   int
-}
-
 func CreateEmployee() {
-	employee := &Employee{"taro", 20001231, true, 300}
+	var user = &employee.Employee{}
+	user.Name = "taro"
+	user.Birthday = 20001231
+	user.IsMan = true
+	user.Salary = 300
 
-	employees := []Employee{*employee}
+	employees := []employee.Employee{*user}
 
 	fmt.Println(employees)
 	showMenu()
