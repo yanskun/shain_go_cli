@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 
 	"github.com/c-bata/go-prompt"
 )
 
-func completer(d prompt.Document) []prompt.Suggest {
+func menu(d prompt.Document) []prompt.Suggest {
 	s := []prompt.Suggest{
 		{Text: "1", Description: "社員を登録"},
 		{Text: "2", Description: "社員を参照"},
@@ -17,8 +19,48 @@ func completer(d prompt.Document) []prompt.Suggest {
 	return prompt.FilterHasPrefix(s, d.GetWordBeforeCursor(), true)
 }
 
+func inputName() {
+	fmt.Print("continue? (Y/n) >")
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		scanner.Scan()
+		p := scanner.Text()
+		fmt.Println("in: ", p)
+		switch p {
+		case "", "Y":
+			fmt.Println("デフォルトの処理をします")
+		case "n":
+			fmt.Println("何もしない")
+		default:
+			fmt.Println("コマンドが不正なのでもう一度入力を促す")
+			continue
+		}
+	}
+}
+
+type Employee struct {
+	name     string
+	birthday int
+	isMan    bool
+	salary   int
+}
+
+// type Employees *[]Employee
+
+func CreateEmployee() {
+	employee := &Employee{"taro", 20001231, true, 300}
+
+	employees := []Employee{*employee}
+
+	fmt.Println(employees)
+	inputName()
+}
+
 func main() {
 	fmt.Println("メニュー選択してね")
-	t := prompt.Input("> ", completer)
-	fmt.Println("You selected " + t)
+	selectedMenu := prompt.Input("> ", menu)
+	switch selectedMenu {
+	case "1":
+		CreateEmployee()
+	}
 }

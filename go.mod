@@ -9,4 +9,5 @@ require (
 	github.com/nasum/culc v0.0.0-20181216121539-fb9798f9a636
 	github.com/spf13/cobra v1.1.3
 	golang.org/x/sys v0.0.0-20210525143221-35b2ab0089ea // indirect
+	gopkg.in/ini.v1 v1.51.0
 )
