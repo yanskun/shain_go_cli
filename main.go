@@ -39,28 +39,36 @@ func inputName() {
 	}
 }
 
-func CreateEmployee() {
+func CreateEmployee(list []employee.Employee) {
 	var user = &employee.Employee{}
 	user.Name = "taro"
 	user.Birthday = 20001231
 	user.IsMan = true
 	user.Salary = 300
 
-	employees := []employee.Employee{*user}
+	newList := append(list, *user)
 
-	fmt.Println(employees)
-	showMenu()
+	showMenu(newList)
 }
 
-func showMenu() {
+func ShowEmployee(list []employee.Employee) {
+	fmt.Print(list)
+
+	showMenu(list)
+}
+
+func showMenu(list []employee.Employee) {
 	selectedMenu := prompt.Input("> ", menu)
 	switch selectedMenu {
 	case "1":
-		CreateEmployee()
+		CreateEmployee(list)
+	case "2":
+		ShowEmployee(list)
 	}
 }
 
 func main() {
+	list := []employee.Employee{}
 	fmt.Println("メニュー選択してね")
-	showMenu()
+	showMenu(list)
 }
