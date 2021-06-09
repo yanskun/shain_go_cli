@@ -51,14 +51,18 @@ func CreateEmployee() {
 	employees := []Employee{*employee}
 
 	fmt.Println(employees)
-	inputName()
+	showMenu()
 }
 
-func main() {
-	fmt.Println("メニュー選択してね")
+func showMenu() {
 	selectedMenu := prompt.Input("> ", menu)
 	switch selectedMenu {
 	case "1":
 		CreateEmployee()
 	}
+}
+
+func main() {
+	fmt.Println("メニュー選択してね")
+	showMenu()
 }
