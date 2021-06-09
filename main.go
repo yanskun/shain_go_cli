@@ -41,6 +41,8 @@ func inputName() {
 
 func CreateShain(list []shain.Shain) {
 	var user = &shain.Shain{}
+	// TODO: 入力できるように
+	user.ID = 1
 	user.Name = "taro"
 	user.Birthday = 20001231
 	user.IsMan = true
@@ -52,9 +54,22 @@ func CreateShain(list []shain.Shain) {
 }
 
 func ShowShainList(list []shain.Shain) {
-	fmt.Print(list)
+	str := fmt.Sprintf("%v \n", list)
+	fmt.Print(str)
 
 	showMenu(list)
+}
+
+func DeleteShain(list []shain.Shain) {
+	newList := []shain.Shain{}
+	// TODO: 🆔 を入力できるように
+	for _, shain := range list {
+		if shain.ID != 1 {
+			newList = append(newList, shain)
+		}
+	}
+
+	showMenu(newList)
 }
 
 func showMenu(list []shain.Shain) {
@@ -64,6 +79,8 @@ func showMenu(list []shain.Shain) {
 		CreateShain(list)
 	case "2":
 		ShowShainList(list)
+	case "4":
+		DeleteShain(list)
 	}
 }
 
