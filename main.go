@@ -45,8 +45,6 @@ type Employee struct {
 	salary   int
 }
 
-// type Employees *[]Employee
-
 func CreateEmployee() {
 	employee := &Employee{"taro", 20001231, true, 300}
 
